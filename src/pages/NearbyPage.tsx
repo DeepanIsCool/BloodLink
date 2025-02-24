@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import BottomNavBar from '../components/BottomNavBar';
 import TopNavBar from '../components/TopNavBar';
+import { useNavigate } from 'react-router-dom';
 
 const bloodBanks = [
   {
@@ -49,6 +50,7 @@ const bloodBanks = [
 ];
 
 function NearbyPage() {
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -118,9 +120,16 @@ function NearbyPage() {
                 ))}
               </div>
 
-              <button className="w-full mt-4 bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">
-                Request Blood
-              </button>
+              <div className="mt-8">
+                          <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => navigate('/blood-request')}
+                            className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                          >
+                            Request Blood
+                          </motion.button>
+                        </div>
             </motion.div>
           ))}
         </div>
