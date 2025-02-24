@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { History, DropletIcon, CheckCircle, XCircle, Clock } from 'lucide-react';
 import BottomNavBar from '../components/BottomNavBar';

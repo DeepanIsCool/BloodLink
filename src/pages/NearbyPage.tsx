@@ -1,5 +1,3 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import BottomNavBar from '../components/BottomNavBar';
