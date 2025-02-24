@@ -122,6 +122,8 @@ function BloodRequest() {
                 min="1"
                 className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 required
+                title="Enter number of units required"
+                placeholder="Enter number of units required"
               />
             </div>
           </div>
@@ -153,6 +155,8 @@ function BloodRequest() {
               onChange={handleInputChange}
               className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               required
+              title="Enter required date"
+              placeholder="Enter required date"
             />
           </div>
 

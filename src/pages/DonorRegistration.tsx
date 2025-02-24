@@ -76,7 +76,7 @@ function DonorRegistration() {
 
         <div className="mb-8">
           <div className="flex justify-between mb-4">
-            {steps.map((step, index) => (
+            {steps.map((_, index) => (
               <div key={index} className={`flex-1 h-2 mx-1 rounded-full ${index <= currentStep ? 'bg-red-600' : 'bg-gray-200'}`}></div>
             ))}
           </div>
@@ -99,6 +99,8 @@ function DonorRegistration() {
                   value={formData.fullName}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Full Name"
+                  placeholder="Enter your full name"
                 />
               </div>
               <div>
@@ -109,6 +111,8 @@ function DonorRegistration() {
                   value={formData.dateOfBirth}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Date of Birth"
+                  placeholder="Enter your date of birth"
                 />
               </div>
               <div>
@@ -118,6 +122,7 @@ function DonorRegistration() {
                   value={formData.gender}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Gender"
                 >
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
@@ -138,6 +143,8 @@ function DonorRegistration() {
                   value={formData.email}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Email"
+                  placeholder="Enter your email"
                 />
               </div>
               <div>
@@ -148,6 +155,8 @@ function DonorRegistration() {
                   value={formData.phone}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Phone Number"
+                  placeholder="Enter your phone number"
                 />
               </div>
               <div>
@@ -158,6 +167,8 @@ function DonorRegistration() {
                   value={formData.address}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Address"
+                  placeholder="Enter your address"
                 />
               </div>
             </>
@@ -172,6 +183,7 @@ function DonorRegistration() {
                   value={formData.bloodGroup}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Blood Group"
                 >
                   <option value="">Select Blood Group</option>
                   <option value="A+">A+</option>
@@ -192,6 +204,8 @@ function DonorRegistration() {
                   value={formData.weight}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  placeholder="Enter your weight"
+                  title="Weight"
                 />
               </div>
               <div>
@@ -202,6 +216,8 @@ function DonorRegistration() {
                   value={formData.lastDonation}
                   onChange={handleInputChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  title="Last Donation Date"
+                  placeholder="Enter the date of your last donation"
                 />
               </div>
             </>
