@@ -42,8 +42,13 @@ function DonorRegistration() {
     });
   };
 
+  const isStepValid = () => {
+    const requiredFields = steps[currentStep].fields;
+    return requiredFields.every(field => formData[field as keyof typeof formData]);
+  };
+
   const nextStep = () => {
-    if (currentStep < steps.length - 1) {
+    if (isStepValid() && currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -51,6 +56,13 @@ function DonorRegistration() {
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const handleSubmit = () => {
+    if (isStepValid()) {
+      // Submit form logic here
+      navigate('/');
     }
   };
 
@@ -77,7 +89,7 @@ function DonorRegistration() {
         <div className="mb-8">
           <div className="flex justify-between mb-4">
             {steps.map((_, index) => (
-              <div key={index} className={`flex-1 h-2 mx-1 rounded-full ${index <= currentStep ? 'bg-red-600' : 'bg-gray-200'}`}></div>
+              <div key={index} className={`flex-1 h-3 mx-1 rounded-full ${index <= currentStep ? 'bg-red-600' : 'bg-gray-200'}`} />
             ))}
           </div>
         </div>
@@ -98,9 +110,10 @@ function DonorRegistration() {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Full Name"
                   placeholder="Enter your full name"
+                  required
                 />
               </div>
               <div>
@@ -110,9 +123,10 @@ function DonorRegistration() {
                   name="dateOfBirth"
                   value={formData.dateOfBirth}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Date of Birth"
                   placeholder="Enter your date of birth"
+                  required
                 />
               </div>
               <div>
@@ -121,8 +135,9 @@ function DonorRegistration() {
                   name="gender"
                   value={formData.gender}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Gender"
+                  required
                 >
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
@@ -142,9 +157,10 @@ function DonorRegistration() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Email"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
               <div>
@@ -154,9 +170,10 @@ function DonorRegistration() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Phone Number"
                   placeholder="Enter your phone number"
+                  required
                 />
               </div>
               <div>
@@ -166,9 +183,10 @@ function DonorRegistration() {
                   name="address"
                   value={formData.address}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Address"
                   placeholder="Enter your address"
+                  required
                 />
               </div>
             </>
@@ -182,8 +200,9 @@ function DonorRegistration() {
                   name="bloodGroup"
                   value={formData.bloodGroup}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Blood Group"
+                  required
                 >
                   <option value="">Select Blood Group</option>
                   <option value="A+">A+</option>
@@ -203,9 +222,10 @@ function DonorRegistration() {
                   name="weight"
                   value={formData.weight}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   placeholder="Enter your weight"
                   title="Weight"
+                  required
                 />
               </div>
               <div>
@@ -215,9 +235,10 @@ function DonorRegistration() {
                   name="lastDonation"
                   value={formData.lastDonation}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-3 focus:ring-red-500 focus:border-red-500 text-lg"
                   title="Last Donation Date"
                   placeholder="Enter the date of your last donation"
+                  required
                 />
               </div>
             </>
@@ -227,10 +248,10 @@ function DonorRegistration() {
         <div className="flex justify-between mt-8">
           <button
             onClick={prevStep}
-            className={`px-6 py-2 rounded-lg ${
+            className={`px-8 py-3 rounded-lg ${
               currentStep === 0
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200 '
             }`}
             disabled={currentStep === 0}
           >
@@ -239,8 +260,11 @@ function DonorRegistration() {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onClick={currentStep === steps.length - 1 ? () => navigate('/') : nextStep}
-            className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center gap-2"
+            onClick={currentStep === steps.length - 1 ? handleSubmit : nextStep}
+            className={`px-8 py-3 text-lg rounded-lg flex items-center gap-3 ${
+              isStepValid() ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
+            disabled={!isStepValid()}
           >
             {currentStep === steps.length - 1 ? 'Submit' : 'Next'}
             <ChevronRight className="w-4 h-4" />
